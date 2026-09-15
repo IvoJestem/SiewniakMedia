@@ -2,7 +2,7 @@
 
 Modern, high-contrast, brutalist & editorial web portfolio built for Siewniak Media / Hudy. Designed specifically for sports videography, matchday reporting, and vertical social media formats (IG Reels, TikTok, Shorts).
 
-Live Demo: [https://ivojestem.github.io/Portfolio/](https://ivojestem.github.io/Portfolio/)]
+Live Demo: [https://ivojestem.github.io/Portfolio/](https://ivojestem.github.io/Portfolio/)
 
 ---
 
