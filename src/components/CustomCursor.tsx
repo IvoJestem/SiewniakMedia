@@ -1,39 +1,63 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
-  const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+
+  const springConfig = { damping: 25, stiffness: 350, mass: 0.5 };
+  const smoothX = useSpring(cursorX, springConfig);
+  const smoothY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+      if (!isVisible) setIsVisible(true);
 
       const target = e.target as HTMLElement | null;
-      if (target && (target.closest('button') || target.closest('a') || target.closest('.cursor-pointer'))) {
-        setIsHovered(true);
-      } else {
-        setIsHovered(false);
-      }
+      const isInteractive = Boolean(
+        target && (target.closest('button') || target.closest('a') || target.closest('.cursor-pointer'))
+      );
+
+      setIsHovered(isInteractive);
+
+      const offset = isInteractive ? 24 : 6;
+      cursorX.set(e.clientX - offset);
+      cursorY.set(e.clientY - offset);
     };
 
+    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseEnter = () => setIsVisible(true);
+
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mouseenter', handleMouseEnter);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mouseenter', handleMouseEnter);
+    };
+  }, [cursorX, cursorY, isVisible]);
 
   return (
     <motion.div
-      className="fixed top-0 left-0 pointer-events-none z-50 rounded-full mix-blend-difference hidden lg:flex items-center justify-center font-mono text-[8px] font-black uppercase text-black"
+      style={{
+        x: smoothX,
+        y: smoothY,
+      }}
+      className={`fixed top-0 left-0 pointer-events-none z-50 rounded-full mix-blend-difference hidden lg:flex items-center justify-center font-mono text-[8px] font-black uppercase text-black bg-white transition-opacity duration-200 ${
+        isVisible ? 'opacity-100' : 'opacity-0'
+      }`}
       animate={{
-        x: mousePos.x - (isHovered ? 24 : 6),
-        y: mousePos.y - (isHovered ? 24 : 6),
         width: isHovered ? 48 : 12,
         height: isHovered ? 48 : 12,
-        backgroundColor: '#ffffff'
       }}
       transition={{ type: 'spring', damping: 25, stiffness: 350, mass: 0.5 }}
     >
-      {isHovered && <span>VIEW</span>}
+      {isHovered && <span>ZOBACZ</span>}
     </motion.div>
   );
 }

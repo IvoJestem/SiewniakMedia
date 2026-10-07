@@ -1,29 +1,65 @@
-import { aboutData } from '../data/projects';
-
 interface AboutTabProps {
   onGoToContact: () => void;
 }
 
+const aboutData = {
+  heroImage: 'img/5.jpg',
+  philosophyImageLeft: 'img/1.jpg',
+  philosophyImageRight: 'img/2.jpg',
+  bioText:
+    'Jestem twórcą wideo i koordynatorem social mediów z pasją do opowiadania prawdziwych historii. Zamieniam pot, emocje na trybunach i walkę na boisku w kinowe, pionowe formaty.',
+  philosophyText:
+    'Każdy mecz, każdy trening, każdy moment za kulisami ma swoją historię. Jestem tam po to, żeby ją uchwycić — surową, prawdziwą i kinową.',
+  stats: {
+    years: '3+',
+    projects: '50+',
+    views: '100K+',
+  },
+  trustedBy: [
+    'ZAGŁĘBIE SOSNOWIEC',
+    'ON LEMON',
+    'FREAK PARK',
+    'LOOPZ PARK',
+    'HUDERLOK',
+  ],
+  services: [
+    {
+      num: '01',
+      title: 'RELACJA Z DNIA MECZOWEGO',
+      desc: 'Pełna obsługa wideo w dniu meczowym. Praca z poziomu murawy i parkietu, emocje z trybun, kulisy szatni oraz dynamiczne ujęcia akcji.',
+      deliverables: ['Formaty Reels / TikTok (9:16)', 'Skróty i najciekawsze akcje', 'Ekspresowy montaż w 24h'],
+    },
+    {
+      num: '02',
+      title: 'PIONOWE FORMATY I REELS',
+      desc: 'Krótkie, dynamiczne formy wideo skrojone pod algorytmy Instagrama i TikToka. Szybkie tempo montażu, autorski sound design oraz precyzyjny color grading.',
+      deliverables: ['Format pionowy 9:16', 'Projektowanie dźwięku i efekty SFX', 'Pakiety rolek na cały tydzień'],
+    },
+    {
+      num: '03',
+      title: 'SPOTY REKLAMOWE I PROMO MAREK',
+      desc: 'Prezentacje nowych kompletów strojów, ogłoszenia transferowe, spoty wizerunkowe dla marek sportowych i materiały promocyjne klubów.',
+      deliverables: ['Spoty wizerunkowe', 'Prezentacje sponsorów', 'Formaty poziome 16:9 oraz pionowe 9:16'],
+    },
+  ],
+};
+
 export default function AboutTab({ onGoToContact }: AboutTabProps) {
   return (
-    <div className="animate-fadeIn max-w-[1500px] mx-auto w-full space-y-24 py-4">
-      
-      {/* GÓRNA SEKCJA */}
+    <div className="animate-fadeIn max-w-375 mx-auto w-full space-y-24 py-4">
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-start">
-        
-        {/* Lewa kolumna: Tytuł i bio */}
         <div className="lg:col-span-4 space-y-8">
           <div className="space-y-4">
             <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest block">/ 03</span>
             <h1 className="text-5xl xl:text-6xl font-black uppercase tracking-tighter leading-[0.88] text-white">
-              ABOUT <br />
-              <span className="text-zinc-600">THE CREATOR</span>
+              O MNIE <br />
+              <span className="text-zinc-600">I TWÓRCZOŚCI</span>
             </h1>
           </div>
           
           <div className="space-y-4">
             <p className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest leading-relaxed">
-              SPORTS. STORIES. EMOTIONS.<br /> THAT&apos;S WHAT I CAPTURE.
+              SPORT. EMOCJE. LUDZIE.<br /> TO WŁAŚNIE UCHWYCAM.
             </p>
             <p className="text-[11px] text-zinc-500 font-mono leading-relaxed max-w-[320px]">
               {aboutData.bioText}
@@ -37,45 +73,41 @@ export default function AboutTab({ onGoToContact }: AboutTabProps) {
             >
               <span className="text-sm transition-transform group-hover:translate-x-1">→</span>
             </button>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-400">LET&apos;S WORK TOGETHER</span>
+            <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-400">NAWIĄŻMY WSPÓŁPRACĘ</span>
           </div>
         </div>
 
-        {/* Środkowa kolumna: Zdjęcie (ze sztywną maksymalną wysokością) */}
         <div className="lg:col-span-3 flex justify-center">
-          <div className="relative w-full max-w-[300px] h-[460px] border border-zinc-800 bg-[#0a0a0a] rounded-sm overflow-hidden flex flex-col justify-between">
+          <div className="relative w-full max-w-75 h-115 border border-zinc-800 bg-[#0a0a0a] rounded-sm overflow-hidden flex flex-col justify-between">
             <img 
               src={aboutData.heroImage} 
-              alt="Creator" 
+              alt="Twórca wideo" 
               className="absolute inset-0 w-full h-full object-cover grayscale contrast-125" 
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20 pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/85 via-transparent to-black/20 pointer-events-none" />
             
             <div className="relative z-10 p-6 flex flex-col justify-end h-full font-mono text-[9px] text-zinc-400 uppercase tracking-widest space-y-1">
-              <p>BETTER</p>
+              <p>LEPSZY</p>
               <p>CONTENT</p>
-              <p>BIGGER</p>
-              <p>DREAMS</p>
+              <p>WIĘKSZE</p>
+              <p>CELE</p>
               <p className="text-white font-black text-sm pt-3">SM.</p>
             </div>
           </div>
         </div>
 
-        {/* Prawa kolumna: Tekst + Statystyki */}
         <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-12 gap-6 pl-0 xl:pl-4">
-          
           <div className="sm:col-span-8 space-y-6">
             <div className="space-y-3">
-              <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block border-b border-zinc-800 pb-2">WHO I AM</span>
+              <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block border-b border-zinc-800 pb-2">KIM JESTEM</span>
               <h2 className="text-2xl xl:text-3xl font-black uppercase tracking-tight text-white leading-tight">
-                I&apos;M A CREATOR <br />AT HEART
+                TWÓRCA Z <br />PASJĄ DO SPORTU
               </h2>
               <p className="text-[11px] font-mono text-zinc-500 leading-relaxed pt-1">
-                Zawsze ciągnęło mnie do sportu — tej nieznanej energii i pasji. Połączyłem to z aparatem i teraz tworzę materiały, które pomagają sportowcom, drużynom i markom opowiadać ich historię poprzez angażujące formaty social media.
+                Zawsze ciągnęło mnie do sportu — tej nieokiełznanej energii, walki i pasji. Połączyłem to z okiem kamery i tworzę materiały, które pomagają sportowcom, drużynom oraz markom opowiadać ich historię poprzez angażujące formaty social media.
               </p>
             </div>
 
-            {/* Ikony */}
             <div className="grid grid-cols-3 gap-3 pt-2">
               <div className="space-y-2">
                 <div className="w-8 h-8 rounded border border-zinc-800 flex items-center justify-center text-zinc-400">
@@ -85,8 +117,8 @@ export default function AboutTab({ onGoToContact }: AboutTabProps) {
                     <path d="M7 7V5h10v2" strokeWidth="1.5" strokeLinecap="square" />
                   </svg>
                 </div>
-                <h4 className="text-[9px] font-bold uppercase text-white tracking-widest">VIDEO</h4>
-                <p className="text-[8px] font-mono text-zinc-600 uppercase">CINEMATIC</p>
+                <h4 className="text-[9px] font-bold uppercase text-white tracking-widest">WIDEO</h4>
+                <p className="text-[8px] font-mono text-zinc-600 uppercase">KINOWE</p>
               </div>
 
               <div className="space-y-2">
@@ -96,8 +128,8 @@ export default function AboutTab({ onGoToContact }: AboutTabProps) {
                     <path d="M12 17h.01" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </div>
-                <h4 className="text-[9px] font-bold uppercase text-white tracking-widest">SOCIALS</h4>
-                <p className="text-[8px] font-mono text-zinc-600 uppercase">REELS</p>
+                <h4 className="text-[9px] font-bold uppercase text-white tracking-widest">SOCIALE</h4>
+                <p className="text-[8px] font-mono text-zinc-600 uppercase">ROLKI</p>
               </div>
 
               <div className="space-y-2">
@@ -106,39 +138,36 @@ export default function AboutTab({ onGoToContact }: AboutTabProps) {
                     <polygon points="9 6 18 12 9 18" strokeWidth="1.5" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <h4 className="text-[9px] font-bold uppercase text-white tracking-widest">STORY</h4>
-                <p className="text-[8px] font-mono text-zinc-600 uppercase">EMOTIONS</p>
+                <h4 className="text-[9px] font-bold uppercase text-white tracking-widest">HISTORIA</h4>
+                <p className="text-[8px] font-mono text-zinc-600 uppercase">EMOCJE</p>
               </div>
             </div>
           </div>
 
-          {/* Kolumna ze statystykami */}
           <div className="sm:col-span-4 border-l border-zinc-800/80 pl-6 space-y-8 text-right font-mono">
             <div>
               <span className="text-3xl font-black text-white block">{aboutData.stats.years}</span>
-              <span className="text-[9px] uppercase tracking-widest text-zinc-600">YEARS<br/>EXPERIENCE</span>
+              <span className="text-[9px] uppercase tracking-widest text-zinc-600">LATA<br/>DOŚWIADCZENIA</span>
             </div>
             <div>
               <span className="text-3xl font-black text-white block">{aboutData.stats.projects}</span>
-              <span className="text-[9px] uppercase tracking-widest text-zinc-600">PROJECTS<br/>COMPLETED</span>
+              <span className="text-[9px] uppercase tracking-widest text-zinc-600">ZREALIZOWANYCH<br/>PROJEKTÓW</span>
             </div>
             <div>
               <span className="text-3xl font-black text-white block">{aboutData.stats.views}</span>
-              <span className="text-[9px] uppercase tracking-widest text-zinc-600">TOTAL VIEWS<br/>ONLINE</span>
+              <span className="text-[9px] uppercase tracking-widest text-zinc-600">ŁĄCZNYCH<br/>WYŚWIETLEŃ</span>
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* SEKCJA: SERVICES & PACKAGES */}
       <section className="pt-10 border-t border-zinc-900">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-6 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-            <span>OFFERING & SERVICES</span>
-            <div className="w-16 h-[1px] bg-zinc-800"></div>
+            <span>OFERTA I USŁUGI</span>
+            <div className="w-16 h-px bg-zinc-800"></div>
           </div>
-          <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">PACKAGES / 2026</span>
+          <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">PAKIETY / 2026</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -150,7 +179,7 @@ export default function AboutTab({ onGoToContact }: AboutTabProps) {
                 <p className="text-[11px] font-mono text-zinc-400 leading-relaxed">{srv.desc}</p>
               </div>
               <div className="pt-5 border-t border-zinc-900 space-y-1.5">
-                <span className="text-[9px] font-mono uppercase tracking-widest text-zinc-600 block">DELIVERABLES:</span>
+                <span className="text-[9px] font-mono uppercase tracking-widest text-zinc-600 block">W RAMACH PAKIETU:</span>
                 {srv.deliverables.map((item, idx) => (
                   <p key={idx} className="text-[10px] font-mono text-zinc-300 flex items-center gap-2">
                     <span className="text-zinc-600">+</span> {item}
@@ -162,11 +191,10 @@ export default function AboutTab({ onGoToContact }: AboutTabProps) {
         </div>
       </section>
 
-      {/* SEKCJA: TRUSTED BY */}
       <section className="pt-10 border-t border-zinc-900">
         <div className="flex items-center gap-6 mb-6 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-          <span>COLLABORATIONS & TEAMS</span>
-          <div className="w-16 h-[1px] bg-zinc-800"></div>
+          <span>WSPÓŁPRACA I ZAUFANIE</span>
+          <div className="w-16 h-px bg-zinc-800"></div>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
@@ -181,23 +209,22 @@ export default function AboutTab({ onGoToContact }: AboutTabProps) {
         </div>
       </section>
 
-      {/* DOLNA SEKCJA: PHILOSOPHY */}
       <section className="pt-10 border-t border-zinc-900">
         <div className="flex items-center gap-6 mb-6 text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
-          <span>MY PHILOSOPHY</span>
-          <div className="w-16 h-[1px] bg-zinc-800"></div>
+          <span>FILOZOFIA DZIAŁANIA</span>
+          <div className="w-16 h-px bg-zinc-800"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center min-h-[160px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center min-h-40">
           <div className="lg:col-span-7 relative w-full h-44 border border-zinc-800/50 bg-[#0a0a0a] rounded-sm overflow-hidden group">
             <img 
               src={aboutData.philosophyImageLeft} 
-              alt="Stadium" 
+              alt="Stadion" 
               className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition duration-700" 
             />
             <div className="absolute inset-0 bg-black/60 flex items-center p-8">
               <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white leading-snug max-w-md">
-                &ldquo;IT&apos;S NOT JUST ABOUT THE GAME. IT&apos;S ABOUT THE PEOPLE.&rdquo;
+                &bdquo;NIE CHODZI TYLKO O SAMĄ GRĘ. CHODZI O LUDZI I ICH HISTORIE.&rdquo;
               </h3>
             </div>
           </div>
@@ -214,16 +241,15 @@ export default function AboutTab({ onGoToContact }: AboutTabProps) {
           <div className="lg:col-span-2 relative w-full h-44 border border-zinc-800/50 rounded-sm overflow-hidden hidden lg:block">
             <img 
               src={aboutData.philosophyImageRight} 
-              alt="Detail" 
+              alt="Detal" 
               className="w-full h-full object-cover grayscale contrast-125" 
             />
             <div className="absolute bottom-3 right-3 text-right font-mono text-[8px] text-zinc-500 uppercase tracking-widest space-y-0.5">
-              <p>SPORTS</p><p>CONTENT</p>
+              <p>CONTENT</p><p>SPORTOWY</p>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }
