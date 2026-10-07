@@ -8,7 +8,11 @@ interface HomeTabProps {
 }
 
 export default function HomeTab({ onGoToWork, onOpenProject }: HomeTabProps) {
-  const homeProjects = projects.slice(0, 3);
+  const featuredIds = ['p06', 'p04', 'p01'];
+
+  const homeProjects = featuredIds
+    .map((id) => projects.find((p) => p.id === id))
+    .filter((p): p is Project => Boolean(p));
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const currentProject = homeProjects[selectedIndex] || homeProjects[0];
@@ -35,7 +39,7 @@ export default function HomeTab({ onGoToWork, onOpenProject }: HomeTabProps) {
         <div className="space-y-6">
           <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest block">/ 01</span>
           <h1 className="text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.85] text-white">
-            HISTORIE <br /> SPORTOWE <br /> <span className="text-zinc-600">MOIM <br />OKIEM</span>
+            HISTORIE <br /> FILMOWE <br /> <span className="text-zinc-600">MOIM <br />OKIEM</span>
           </h1>
         </div>
         <p className="text-[11px] text-zinc-400 max-w-70 font-mono leading-relaxed uppercase tracking-wider">

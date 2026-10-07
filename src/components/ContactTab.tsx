@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const contactData = {
-  email: 'kontakt@siewniakmedia.pl',
+  email: 'kubasiewniak1@gmail.com',
   location: 'Śląsk / Katowice, Polska',
   instagramUrl: 'https://www.instagram.com/siewniakfilms/',
   tiktokUrl: 'https://tiktok.com/@huderlokyt/',
@@ -163,7 +163,7 @@ export default function ContactTab() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="twoj@email.pl"
+                placeholder="kubasiewniak1@gmail.com"
                 className={`w-full bg-transparent border rounded-sm px-4 py-3 text-zinc-200 placeholder-zinc-700 focus:outline-none transition ${
                   errors.email ? 'border-red-500/80 bg-red-950/10' : 'border-zinc-800 focus:border-zinc-500'
                 }`}
@@ -228,7 +228,7 @@ export default function ContactTab() {
               <p className="text-zinc-200">
                 {contactData.location.split(' / ')[0]} / <br className="hidden lg:block"/>
                 {contactData.location.split(' / ')[1]} <br />
-                <span className="text-zinc-600">(Praca w całej Polsce i zdalnie)</span>
+                <span className="text-zinc-600"></span>
               </p>
             </div>
           </div>

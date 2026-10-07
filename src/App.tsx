@@ -25,9 +25,9 @@ const marqueeItems: string[] = [
   'RELACJE Z DNIA MECZOWEGO',
   'STRATEGIA SOCIAL MEDIA',
   'PIONOWE WIDEO 9:16',
-  'PAKIETY HIGHLIGHTÓW 4K',
+  'PAKIETY HIGHLIGHTÓW',
   'WIZERUNEK W SPORCIE',
-  'KATOWICE / ŚLĄSK / CAŁA POLSKA'
+  'KATOWICE / ŚLĄSK'
 ];
 
 const pageVariants = {

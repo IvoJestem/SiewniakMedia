@@ -10,6 +10,27 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+    {
+    id: 'p08',
+    num: '08',
+    title: 'Wydarzenie W Plenerze',
+    category: 'Wydarzenie',
+    videoSrc: 'video/8.mp4',
+  },
+    {
+    id: 'p11',
+    num: '11',
+    title: 'Trailer meczu',
+    category: 'Trailer',
+    videoSrc: 'video/11.mp4',
+  },
+  {
+    id: 'p12',
+    num: '12',
+    title: 'Trailer meczu',
+    category: 'Trailer',
+    videoSrc: 'video/12.mp4',
+  },
   {
     id: 'p01',
     num: '01',
@@ -59,13 +80,7 @@ export const projects: Project[] = [
     category: 'Mixtape',
     videoSrc: 'video/7.mp4',
   },
-  {
-    id: 'p08',
-    num: '08',
-    title: 'Wydarzenie W Plenerze',
-    category: 'Wydarzenie',
-    videoSrc: 'video/8.mp4',
-  },
+
   {
     id: 'p09',
     num: '09',
@@ -79,20 +94,6 @@ export const projects: Project[] = [
     title: 'Mecz Hokeja',
     category: 'Mecz',
     videoSrc: 'video/10.mp4',
-  },
-  {
-    id: 'p11',
-    num: '11',
-    title: 'Trailer meczu',
-    category: 'Trailer',
-    videoSrc: 'video/11.mp4',
-  },
-  {
-    id: 'p12',
-    num: '12',
-    title: 'Trailer meczu',
-    category: 'Trailer',
-    videoSrc: 'video/12.mp4',
   },
 ];
 

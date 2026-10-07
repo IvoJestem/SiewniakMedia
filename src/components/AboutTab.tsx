@@ -7,9 +7,9 @@ const aboutData = {
   philosophyImageLeft: 'img/1.jpg',
   philosophyImageRight: 'img/2.jpg',
   bioText:
-    'Jestem twórcą wideo i koordynatorem social mediów z pasją do opowiadania prawdziwych historii. Zamieniam pot, emocje na trybunach i walkę na boisku w kinowe, pionowe formaty.',
+    'Jestem twórcą wideo i koordynatorem social mediów z pasją do opowiadania prawdziwych historii. Zamieniam pot, emocje na trybunach i walkę na boisku w kinowe, pionowe i poziome formaty.',
   philosophyText:
-    'Każdy mecz, każdy trening, każdy moment za kulisami ma swoją historię. Jestem tam po to, żeby ją uchwycić — surową, prawdziwą i kinową.',
+    'Każdy mecz, każdy trening, każdy moment za kulisami ma swoją historię. Jestem tam po to, żeby ją uchwycić, surową, prawdziwą i kinową.',
   stats: {
     years: '3+',
     projects: '50+',
@@ -20,26 +20,32 @@ const aboutData = {
     'ON LEMON',
     'FREAK PARK',
     'LOOPZ PARK',
-    'HUDERLOK',
+    'DECATHLON',
+    'STS',
+    'EKSTRAKLASOWE DRUŻYNY PLK',
+    'JUNIOR.NBA',
+    'DRAFT CAMP',
+    'SHAQ ALL STARS LEAGUE',
+    'SK STORE',
   ],
   services: [
     {
       num: '01',
       title: 'RELACJA Z DNIA MECZOWEGO',
       desc: 'Pełna obsługa wideo w dniu meczowym. Praca z poziomu murawy i parkietu, emocje z trybun, kulisy szatni oraz dynamiczne ujęcia akcji.',
-      deliverables: ['Formaty Reels / TikTok (9:16)', 'Skróty i najciekawsze akcje', 'Ekspresowy montaż w 24h'],
+      deliverables: ['Formaty Pionowe / Poziome', 'Skróty i najciekawsze akcje', 'Ekspresowy montaż do 48h'],
     },
     {
       num: '02',
       title: 'PIONOWE FORMATY I REELS',
       desc: 'Krótkie, dynamiczne formy wideo skrojone pod algorytmy Instagrama i TikToka. Szybkie tempo montażu, autorski sound design oraz precyzyjny color grading.',
-      deliverables: ['Format pionowy 9:16', 'Projektowanie dźwięku i efekty SFX', 'Pakiety rolek na cały tydzień'],
+      deliverables: ['Format pionowy 9:16', 'Projektowanie dźwięku i efekty SFX', 'Wszystko dostosowane pod ciebie'],
     },
     {
       num: '03',
       title: 'SPOTY REKLAMOWE I PROMO MAREK',
-      desc: 'Prezentacje nowych kompletów strojów, ogłoszenia transferowe, spoty wizerunkowe dla marek sportowych i materiały promocyjne klubów.',
-      deliverables: ['Spoty wizerunkowe', 'Prezentacje sponsorów', 'Formaty poziome 16:9 oraz pionowe 9:16'],
+      desc: 'Prezentacje nowych produktów, ogłoszeń, lokalu dla marek i materiały promocyjne.',
+      deliverables: ['Spoty wizerunkowe', 'Prezentacje produktów', 'Formaty poziome 16:9 oraz pionowe 9:16'],
     },
   ],
 };
@@ -197,11 +203,52 @@ export default function AboutTab({ onGoToContact }: AboutTabProps) {
           <div className="w-16 h-px bg-zinc-800"></div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-          {aboutData.trustedBy.map((brand, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {/* Wiersz 1: 3 marki */}
+          {aboutData.trustedBy.slice(0, 3).map((brand, idx) => (
             <div
               key={idx}
-              className="border border-zinc-900 p-5 flex items-center justify-center text-center font-mono text-[10px] tracking-widest text-zinc-500 uppercase hover:text-white hover:border-zinc-700 transition"
+              className="border border-zinc-900 bg-[#080808]/70 p-5 flex items-center justify-center text-center font-mono text-[10px] tracking-widest text-zinc-500 uppercase hover:text-white hover:border-zinc-700 hover:bg-zinc-900/40 transition duration-300 rounded-sm min-h-16"
+            >
+              {brand}
+            </div>
+          ))}
+
+          {/* Wiersz 2: 3 marki */}
+          {aboutData.trustedBy.slice(3, 6).map((brand, idx) => (
+            <div
+              key={idx + 3}
+              className="border border-zinc-900 bg-[#080808]/70 p-5 flex items-center justify-center text-center font-mono text-[10px] tracking-widest text-zinc-500 uppercase hover:text-white hover:border-zinc-700 hover:bg-zinc-900/40 transition duration-300 rounded-sm min-h-16"
+            >
+              {brand}
+            </div>
+          ))}
+
+          {/* Wiersz 3: Marka 7 */}
+          <div className="border border-zinc-900 bg-[#080808]/70 p-5 flex items-center justify-center text-center font-mono text-[10px] tracking-widest text-zinc-500 uppercase hover:text-white hover:border-zinc-700 hover:bg-zinc-900/40 transition duration-300 rounded-sm min-h-16">
+            {aboutData.trustedBy[6]}
+          </div>
+
+          {/* Wiersz 3: ŚRODEK SIATKI - WYRÓŻNIONE MIEJSCE NA MARKĘ */}
+          <button
+            onClick={onGoToContact}
+            className="border border-dashed border-zinc-700 hover:border-white bg-zinc-950/80 hover:bg-white text-zinc-300 hover:text-black p-5 flex items-center justify-center gap-2 text-center font-mono text-[10px] font-bold tracking-widest uppercase transition-all duration-300 rounded-sm min-h-16 cursor-pointer group"
+          >
+            <span className="text-zinc-500 group-hover:text-black transition-colors">+</span>
+            <span>MIEJSCE NA TWOJĄ MARKĘ</span>
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </button>
+
+          {/* Wiersz 3: Marka 8 */}
+          <div className="border border-zinc-900 bg-[#080808]/70 p-5 flex items-center justify-center text-center font-mono text-[10px] tracking-widest text-zinc-500 uppercase hover:text-white hover:border-zinc-700 hover:bg-zinc-900/40 transition duration-300 rounded-sm min-h-16">
+            {aboutData.trustedBy[7]}
+          </div>
+
+          {/* Wiersz 4: Ostatnie 3 marki */}
+          {aboutData.trustedBy.slice(8, 11).map((brand, idx) => (
+            <div
+              key={idx + 8}
+              className="border border-zinc-900 bg-[#080808]/70 p-5 flex items-center justify-center text-center font-mono text-[10px] tracking-widest text-zinc-500 uppercase hover:text-white hover:border-zinc-700 hover:bg-zinc-900/40 transition duration-300 rounded-sm min-h-16"
             >
               {brand}
             </div>
