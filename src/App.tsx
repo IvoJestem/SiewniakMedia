@@ -185,10 +185,12 @@ export default function App() {
               transition={pageTransition}
               className="w-full h-full"
             >
-              <WorkTab onOpenProject={(p) => setSelectedProject(p)} />
+              <WorkTab 
+                onOpenProject={(p) => setSelectedProject(p)} 
+                onGoToContact={() => setActiveTab('contact')} 
+              />
             </motion.div>
           )}
-
           {activeTab === 'about' && (
             <motion.div
               key="about"

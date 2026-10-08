@@ -8,7 +8,7 @@ interface HomeTabProps {
 }
 
 export default function HomeTab({ onGoToWork, onOpenProject }: HomeTabProps) {
-  const featuredIds = ['p06', 'p04', 'p01'];
+  const featuredIds = ['p13', 'p07', 'p04'];
 
   const homeProjects = featuredIds
     .map((id) => projects.find((p) => p.id === id))

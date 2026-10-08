@@ -7,17 +7,18 @@ export interface Project {
   title: string;
   category: string;
   videoSrc: string;
+  isCta?: boolean;
 }
 
 export const projects: Project[] = [
-    {
+  {
     id: 'p08',
     num: '08',
     title: 'Wydarzenie W Plenerze',
     category: 'Wydarzenie',
     videoSrc: 'video/8.mp4',
   },
-    {
+  {
     id: 'p11',
     num: '11',
     title: 'Trailer meczu',
@@ -32,6 +33,20 @@ export const projects: Project[] = [
     videoSrc: 'video/12.mp4',
   },
   {
+    id: 'p13',
+    num: '13',
+    title: 'PLAY-IN - @mks_dg vs @stal_ostrow #basket #basketball',
+    category: 'Skrót',
+    videoSrc: 'video/13.mp4',
+  },
+  {
+    id: 'p14',
+    num: '14',
+    title: '@mks_dg dalej walczy z @legiakoszCzekamy na 4 mecz serii Playoff!#koszykówka',
+    category: 'Skrót',
+    videoSrc: 'video/14.mp4',
+  },
+  {
     id: 'p01',
     num: '01',
     title: 'Nowy Koktajl Na Barze',
@@ -44,6 +59,15 @@ export const projects: Project[] = [
     title: 'Mistrzostwa Drinków',
     category: 'Wydarzenie',
     videoSrc: 'video/2.mp4',
+  },
+  // POZYCJA 8 (INDEKS 7) - ŚRODEK SIATKI 3x5
+  {
+    id: 'cta-collab',
+    num: '+',
+    title: 'MIEJSCE NA TWÓJ PROJEKT',
+    category: 'Współpraca',
+    videoSrc: '',
+    isCta: true,
   },
   {
     id: 'p03',
@@ -80,7 +104,6 @@ export const projects: Project[] = [
     category: 'Mixtape',
     videoSrc: 'video/7.mp4',
   },
-
   {
     id: 'p09',
     num: '09',
@@ -99,13 +122,14 @@ export const projects: Project[] = [
 
 interface WorkTabProps {
   onOpenProject: (p: Project) => void;
+  onGoToContact: () => void;
 }
 
-export default function WorkTab({ onOpenProject }: WorkTabProps) {
+export default function WorkTab({ onOpenProject, onGoToContact }: WorkTabProps) {
   const [activeFilter, setActiveFilter] = useState('WSZYSTKIE');
 
   const categoryCounts = projects.reduce((acc, project) => {
-    const mainCategory = project.category.split(' / ')[0];
+    const mainCategory = project.category.split(' / ')[0].toUpperCase();
     acc['WSZYSTKIE'] = (acc['WSZYSTKIE'] || 0) + 1;
     acc[mainCategory] = (acc[mainCategory] || 0) + 1;
     return acc;
@@ -119,7 +143,9 @@ export default function WorkTab({ onOpenProject }: WorkTabProps) {
   const filteredProjects =
     activeFilter === 'WSZYSTKIE'
       ? projects
-      : projects.filter((p) => p.category.split(' / ')[0] === activeFilter);
+      : projects.filter(
+          (p) => p.category.split(' / ')[0].toUpperCase() === activeFilter
+        );
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start animate-fadeIn max-w-[1600px] mx-auto w-full">
@@ -171,13 +197,51 @@ export default function WorkTab({ onOpenProject }: WorkTabProps) {
       <div className="lg:col-span-9">
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           <AnimatePresence>
-            {filteredProjects.map((p) => (
-              <WorkCard
-                key={p.id}
-                project={p}
-                onOpen={() => onOpenProject(p)}
-              />
-            ))}
+            {filteredProjects.map((p) => {
+              if (p.isCta) {
+                return (
+                  <motion.div
+                    key={p.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    onClick={onGoToContact}
+                    className="relative aspect-square rounded-sm border border-dashed border-zinc-700 bg-zinc-950/80 p-8 flex flex-col justify-between items-center text-center group cursor-pointer hover:border-white hover:bg-zinc-900/60 transition duration-300"
+                  >
+                    <span className="text-[9px] font-mono uppercase tracking-widest text-zinc-500 self-start">
+                      / WSPÓŁPRACA
+                    </span>
+
+                    <div className="space-y-3">
+                      <span className="text-3xl font-light text-zinc-400 group-hover:scale-125 transition-transform block">
+                        +
+                      </span>
+                      <h3 className="text-base font-black uppercase tracking-tight text-white leading-tight">
+                        MIEJSCE NA <br /> TWÓJ PROJEKT
+                      </h3>
+                      <p className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">
+                        Stwórzmy razem coś kinowego
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-zinc-400 group-hover:text-white transition">
+                      <span>NAPISZ DO MNIE</span>
+                      <span className="transition-transform group-hover:translate-x-1">→</span>
+                    </div>
+                  </motion.div>
+                );
+              }
+
+              return (
+                <WorkCard
+                  key={p.id}
+                  project={p}
+                  onOpen={() => onOpenProject(p)}
+                />
+              );
+            })}
           </AnimatePresence>
         </motion.div>
       </div>
